@@ -4,7 +4,7 @@ require_once "model/HotelskaSoba.php";
 require_once "model/Gost.php";
 require_once "model/Rezervacija.php";
 $conn=Baza::getConnection();
-
+$rezervacijeOdgovor=null;
 ?>
 
 <!doctype html>
@@ -30,9 +30,9 @@ $conn=Baza::getConnection();
             <select class="form-select" aria-label="Default select example" id="sifraHotelskeSobeId" name="sifraHotelskeSobe">
                 <option value="">Izaberi sobu</option>
                 <?php
-                $odgovor = HotelskaSoba::vratiSve($conn);
-                if($odgovor!=null){
-                    while (($red=$odgovor->fetch_assoc())!=null){?>
+                $rezervacijeOdgovor = HotelskaSoba::vratiSve($conn);
+                if($rezervacijeOdgovor!=null){
+                    while (($red=$rezervacijeOdgovor->fetch_assoc())!=null){?>
                         <option value="<?=$red['sifra'];?>"><?=$red["naziv"]." Soba: ".$red['broj']." Sprat: ".$red['sprat'];?></option>
                         <?php
                     }
@@ -45,9 +45,9 @@ $conn=Baza::getConnection();
             <select class="form-select" aria-label="Default select example" id="sifraGostaId" name="sifraGosta">
                 <option value="">Izaberi gosta</option>
                 <?php
-                $odgovor = Gost::vratiSve($conn);
-                if($odgovor!=null){
-                    while (($red=$odgovor->fetch_assoc())!=null){?>
+                $rezervacijeOdgovor = Gost::vratiSve($conn);
+                if($rezervacijeOdgovor!=null){
+                    while (($red=$rezervacijeOdgovor->fetch_assoc())!=null){?>
                         <option value="<?=$red['sifra'];?>"><?=$red["brDokumenta"]." ".$red['ime']." ".$red['prezime'];?></option>
                         <?php
                     }
@@ -76,7 +76,15 @@ $conn=Baza::getConnection();
     </form>
 <br>
     <div class="lista">
-        <h2>Lista rezervacija</h2>
+
+
+            <div class="d-flex p-1">
+                <h2>Lista rezervacija</h2>
+                <div class="w-25 p-3">
+                    <input class="form-control" type="text" placeholder="pretraga" id="pretraga">
+                </div>
+            </div>
+
         <table class="table table-striped">
 
             <thead>
@@ -94,11 +102,11 @@ $conn=Baza::getConnection();
             </tr>
             </thead>
 
-            <tbody>
+            <tbody id="tableBodyRezervacija">
             <?php
-            $odgovor = Rezervacija::vratiSve($conn);
-            if($odgovor!=null){
-                while (($red=$odgovor->fetch_assoc())!=null){?>
+            $rezervacijeOdgovor = Rezervacija::vratiSve($conn);
+            if($rezervacijeOdgovor!=null){
+                while (($red=$rezervacijeOdgovor->fetch_assoc())!=null){?>
                     <tr>
                         <td><?= $red["brDokumenta"];?></td>
                         <td><?= $red["ime"];?></td>
@@ -130,5 +138,6 @@ $conn=Baza::getConnection();
 
 <?php require_once "templates/skriptTagovi.php";?>
 <script src="js/rezervacija.js"></script>
+
 </body>
 </html>

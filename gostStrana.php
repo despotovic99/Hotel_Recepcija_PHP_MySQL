@@ -74,7 +74,12 @@ $conn = Baza::getConnection();
     <br>
 
     <div class="lista">
-        <h2>Lista gostiju</h2>
+        <div class="d-flex p-1">
+            <h2>Lista gostiju</h2>
+            <div class="w-25 p-3">
+                <input class="form-control" type="text" placeholder="pretraga" id="pretraga">
+            </div>
+        </div>
         <table class="table table-striped">
 
             <thead>
@@ -91,7 +96,7 @@ $conn = Baza::getConnection();
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody id="tableBodyRezervacija">
             <?php
             $odgovor = Gost::vratiSve($conn);
             if($odgovor!=null){
