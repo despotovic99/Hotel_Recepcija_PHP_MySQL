@@ -47,10 +47,13 @@ $conn=Baza::getConnection();
     </form>
 <br>
     <div class="lista">
-        <div class="d-flex p-1">
+        <div class="d-flex p-1 justify-content-between">
             <h2>Lista hotela</h2>
             <div class="w-25 p-3">
                 <input class="form-control" type="text" placeholder="pretraga" id="pretraga">
+            </div>
+            <div>
+                <input class="form-control" type="button" id="sortBtn" value="sortiraj">
             </div>
         </div>
         <table class="table table-striped">
@@ -64,7 +67,7 @@ $conn=Baza::getConnection();
             </tr>
             </thead>
 
-            <tbody id="tableBodyRezervacija">
+            <tbody id="tableBody">
             <?php
             $odgovor = Hotel::vratiSve($conn);
             if($odgovor!=null){

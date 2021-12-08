@@ -55,14 +55,15 @@ $rezervacijeOdgovor=null;
                 ?>
             </select>
         </div>
+        <br>
         <div class="container row">
-            <div class="col input-group mb-3">
-                <label for="datumOdId">Datum od</label>
-                <input type="date" id="datumOdId" name="datumOd">
+            <div class="col input-group mb-3 ">
+                <span class="input-group-text" style="font-size: 0.8em">Datum od</span>
+                <input class="form-control" type="date" id="datumOdId" name="datumOd">
             </div>
             <div class="col input-group mb-3">
-                <label for="datumDoId">Datum do</label>
-                <input type="date" id="datumDoId" name="datumDo">
+                <span class="input-group-text" style="font-size: 0.8em">Datum do</span>
+                <input class="form-control" type="date" id="datumDoId" name="datumDo">
             </div>
         </div>
         <div class="input-group mb-3 container">
@@ -78,10 +79,13 @@ $rezervacijeOdgovor=null;
     <div class="lista">
 
 
-            <div class="d-flex p-1">
+            <div class="d-flex p-1 justify-content-between">
                 <h2>Lista rezervacija</h2>
                 <div class="w-25 p-3">
                     <input class="form-control" type="text" placeholder="pretraga" id="pretraga">
+                </div>
+                <div>
+                    <input class="form-control" type="button" id="sortBtn" value="sortiraj">
                 </div>
             </div>
 
@@ -102,7 +106,7 @@ $rezervacijeOdgovor=null;
             </tr>
             </thead>
 
-            <tbody id="tableBodyRezervacija">
+            <tbody id="tableBody">
             <?php
             $rezervacijeOdgovor = Rezervacija::vratiSve($conn);
             if($rezervacijeOdgovor!=null){

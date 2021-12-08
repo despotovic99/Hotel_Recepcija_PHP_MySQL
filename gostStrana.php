@@ -34,7 +34,8 @@ $conn = Baza::getConnection();
         </div>
 
         <div class="input-group mb-3 container">
-            <input class="form-control" type="date" name="datumRodjenja" placeholder="Datum rodjenja" value="">
+            <span class="input-group-text">Datum rođenja</span>
+            <input class="form-control" type="date" id="datumRodjenjaId" name="datumRodjenja" value="">
         </div>
 
         <div class="input-group mb-3 container">
@@ -74,10 +75,13 @@ $conn = Baza::getConnection();
     <br>
 
     <div class="lista">
-        <div class="d-flex p-1">
+        <div class="d-flex p-1 justify-content-between">
             <h2>Lista gostiju</h2>
             <div class="w-25 p-3">
                 <input class="form-control" type="text" placeholder="pretraga" id="pretraga">
+            </div>
+            <div>
+                <input class="form-control" type="button" id="sortBtn" value="sortiraj">
             </div>
         </div>
         <table class="table table-striped">
@@ -96,7 +100,7 @@ $conn = Baza::getConnection();
                 </tr>
             </thead>
 
-            <tbody id="tableBodyRezervacija">
+            <tbody id="tableBody">
             <?php
             $odgovor = Gost::vratiSve($conn);
             if($odgovor!=null){
