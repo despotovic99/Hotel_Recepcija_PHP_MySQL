@@ -27,60 +27,60 @@ $('#pretraga').on("keyup", function() {
 
 $('#sortBtn').click(function (){
 
-    let nizPomocni = $("#tableBody")[0].getElementsByTagName("tr");
-    let niz =[];
-    for(let i=0;i<nizPomocni.length;i++){
-        niz.push(nizPomocni[i]);
-    }
-    $('#tableBody').empty();
+    let tabela = document.getElementById("tableBody");
+
     let sortiran = false;
 
     if($(this).val()!=='A-Z'){
         $(this).val('A-Z');
 
-        while (!sortiran){
-            sortiran=true;
-            for(let i=1;i<niz.length;i++){
-
-                let e1 =niz[i-1].getElementsByTagName('td')[0].innerHTML;
-                let e2 =niz[i].getElementsByTagName('td')[0].innerHTML;
-
-                if(e1>e2){
-                    let p = niz[i-1];
-                    niz[i-1]=niz[i];
-                    niz[i]=p;
-                    sortiran=false;
+        while (!sortiran) {
+            sortiran = true;
+            let tr = tabela.getElementsByTagName("tr");
+            let zameniti;
+            let i;
+            for (i = 0; i < tr.length-1; i++) {
+                zameniti = false;
+                let el1 = tr[i].getElementsByTagName("td")[0];
+                let el2 = tr[i + 1].getElementsByTagName("td")[0];
+                if (el1.innerHTML.toLowerCase() > el2.innerHTML.toLowerCase()) {
+                    zameniti = true;
                     break;
                 }
             }
+            if (zameniti) {
+                tr[i].parentNode.insertBefore(tr[i + 1], tr[i]);
+                sortiran = false;
+            }
         }
 
-    }else{
+
+    }else {
         $(this).val('Z-A');
-        while (!sortiran){
-            sortiran=true;
-            for(let i=1;i<niz.length;i++){
 
-                let e1 =niz[i-1].getElementsByTagName('td')[0].innerHTML;
-                let e2 =niz[i].getElementsByTagName('td')[0].innerHTML;
-
-                if(e1<e2){
-                    let p = niz[i-1];
-                    niz[i-1]=niz[i];
-                    niz[i]=p;
-                    sortiran=false;
+        while (!sortiran) {
+            sortiran = true;
+            let tr = tabela.getElementsByTagName("tr");
+            let zameniti;
+            let i;
+            for (i = 0; i < tr.length-1; i++) {
+                zameniti = false;
+                let el1 = tr[i].getElementsByTagName("td")[0];
+                let el2 = tr[i + 1].getElementsByTagName("td")[0];
+                if (el1.innerHTML.toLowerCase() < el2.innerHTML.toLowerCase()) {
+                    zameniti = true;
                     break;
                 }
+            }
+            if (zameniti) {
+                tr[i].parentNode.insertBefore(tr[i + 1], tr[i]);
+                sortiran = false;
             }
         }
     }
 
 
 
-    for (let i=0;i<niz.length;i++) {
-        console.log(niz[i])
-        $('#tableBody').append(niz[i]);
-    }
 
 
 });

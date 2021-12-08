@@ -39,10 +39,11 @@ $('#resetForme').click(function (){
     $('#checkMinibar').prop("checked",false);
 });
 
-$('#formaHotel').submit(function (){
+$('#formaHotelskaSoba').submit(function (){
     event.preventDefault();
     const forma = $(this);
     const unos = forma.find('input, select');
+    console.log(unos)
     unos.prop('disabled',true);
     let podaci = unos.serialize();
     let kuhinjaVrednost= $('#checkKuhinja').is(":checked")?1:0;
@@ -66,7 +67,7 @@ $('#formaHotel').submit(function (){
             $('<div style="color: green;"><h5>Uspesno sacuvana soba</h5></div>').insertBefore($('#nazivHotelskeSobeDiv')).delay(3000).fadeOut(function() {
                 $(this).remove();
             });
-            location.reload();
+         //   location.reload();
         }else{
             $('<div style="color: red;"><h5>Neuspesno sacuvana soba</h5></div>').insertBefore($('#nazivHotelskeSobeDiv')).delay(3000).fadeOut(function() {
                 $(this).remove();

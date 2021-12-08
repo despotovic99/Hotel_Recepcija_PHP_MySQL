@@ -19,7 +19,7 @@ $conn=Baza::getConnection();
 
     <div class="naslovStrane"><h1>Dodaj hotelsku sobu</h1></div>
     <br>
-    <form id="formaHotel">
+    <form id="formaHotelskaSoba">
         <input type="hidden" name="sifra" value="">
         <div class="input-group mb-3 container" id="nazivHotelskeSobeDiv">
             <input class="form-control" type="text" name="broj" placeholder="Broj hotelske sobe" value="">

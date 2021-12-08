@@ -75,7 +75,7 @@ $('input[name="checkGost"]').click(function (){
 
 $('#resetForme').click(function (){
     $('input[name="sifra"]').val("");
-    $('input[name="checkGost"]').prop('checked',false);
+   // $('input[name="checkGost"]').prop('checked',false);
 });
 
 $('#obrisi').click(function(e){
