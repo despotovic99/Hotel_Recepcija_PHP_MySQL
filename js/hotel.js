@@ -2,7 +2,7 @@ $('#formaHotel').submit(function (){
     event.preventDefault();
     const forma = $(this);
     const unos = forma.find('input, select');
-    const podaci = unos.serialize();
+    const podaci = forma.serialize();
     console.log(podaci);
     unos.prop("disabled",true);
     let url = "operations/hotel/dodaj.php";

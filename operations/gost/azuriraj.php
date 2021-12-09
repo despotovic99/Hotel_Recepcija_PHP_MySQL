@@ -12,7 +12,6 @@ if(isset($_POST['brDokumenta']) && $_POST['brDokumenta']!="" &&
     isset($_POST['email']) && $_POST['email']!="" &&
     isset($_POST['brTelefona']) && $_POST['brTelefona']!="" &&
     isset($_POST['pol']) && $_POST['pol']!="" &&
-    isset($_POST['straniGost']) && $_POST['straniGost']!="" &&
     isset($_POST['sifra']) && $_POST['sifra']!=""){
 
     $brDokumenta = htmlspecialchars($_POST['brDokumenta'],ENT_QUOTES);
@@ -22,7 +21,7 @@ if(isset($_POST['brDokumenta']) && $_POST['brDokumenta']!="" &&
     $email = htmlspecialchars($_POST['email'],ENT_QUOTES);
     $brTelefona = htmlspecialchars($_POST['brTelefona'],ENT_QUOTES);
     $pol = htmlspecialchars($_POST['pol'],ENT_QUOTES);
-    $straniGost=htmlspecialchars($_POST['straniGost'],ENT_QUOTES);
+    $straniGost=isset($_POST['straniGost'])&&$_POST['straniGost']=='1'?1:0;
     $sifra=htmlspecialchars($_POST['sifra'],ENT_QUOTES);
 
 

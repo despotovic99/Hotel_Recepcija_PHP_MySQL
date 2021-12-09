@@ -19,7 +19,7 @@ $conn=Baza::getConnection();
 
     <div class="naslovStrane"><h1>Dodaj hotelsku sobu</h1></div>
     <br>
-    <form id="formaHotelskaSoba">
+    <form id="formaSoba">
         <input type="hidden" name="sifra" value="">
         <div class="input-group mb-3 container" id="nazivHotelskeSobeDiv">
             <input class="form-control" type="text" name="broj" placeholder="Broj hotelske sobe" value="">
@@ -66,7 +66,7 @@ $conn=Baza::getConnection();
         <div class="d-grid gap-2 d-md-block container">
             <button type="submit" id="sacuvaj" class="btn btn-success">Sačuvaj</button>
             <button type="reset" id="resetForme" class="btn btn-secondary">Očisti formu</button>
-            <button type="" id="obrisi" class="btn btn-danger">Obriši</button>
+            <button type="button" id="obrisi" class="btn btn-danger">Obriši</button>
         </div>
     </form>
     <br>

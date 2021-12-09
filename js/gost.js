@@ -2,11 +2,12 @@ $('#formaGost').submit(function(){
     event.preventDefault();
     const forma=$(this);
     const unos=forma.find('input');
+    console.log(unos)
+    let podaci=forma.serialize();
+    podaci+=`&pol=${$('input[name="pol"]:checked').val()}`;
+    podaci+=`&straniGost=${$('input[name="straniGost"]:checked').val()}`;
 
-    let serijalizovaniPodaci=unos.serialize();
-    const strani=$("#checkStrani").is(":checked")?1:0;
-    serijalizovaniPodaci+=("&straniGost="+strani);
-    console.log(serijalizovaniPodaci);
+    console.log(podaci);
     unos.prop('disabled',true);
     let url = "operations/gost/dodaj.php";
     if($("input[name='sifra']")[0].value!=""){
@@ -15,7 +16,7 @@ $('#formaGost').submit(function(){
     req=$.ajax({
         url:url,
         method:"post",
-        data:serijalizovaniPodaci
+        data:podaci
     });
 
     req.done(function(res,textStatus,jqXHR){
@@ -75,7 +76,7 @@ $('input[name="checkGost"]').click(function (){
 
 $('#resetForme').click(function (){
     $('input[name="sifra"]').val("");
-   // $('input[name="checkGost"]').prop('checked',false);
+    $('input[name="checkGost"]:checked').prop('checked',false);
 });
 
 $('#obrisi').click(function(e){

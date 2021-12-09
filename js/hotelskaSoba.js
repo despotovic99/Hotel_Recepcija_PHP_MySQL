@@ -39,13 +39,23 @@ $('#resetForme').click(function (){
     $('#checkMinibar').prop("checked",false);
 });
 
-$('#formaHotelskaSoba').submit(function (){
+$('#formaSoba').submit(function (){
     event.preventDefault();
     const forma = $(this);
-    const unos = forma.find('input, select');
-    console.log(unos)
+    const unos = forma.find('select');
     unos.prop('disabled',true);
-    let podaci = unos.serialize();
+    let podaci="";
+    let sifra=$('input[name="sifra"]').val()
+    podaci+=`&sifra=${sifra}`;
+    let broj=$('input[name="broj"]').val()
+    podaci+=`&broj=${broj}`;
+    let sprat=$('input[name="sprat"]').val();
+    podaci+=`&sprat=${sprat}`;
+    let brojKreveta=$('input[name="brojKreveta"]').val();
+    podaci+=`&brojKreveta=${brojKreveta}`;
+    let hotel=$('#sifraHotelaId').find(':selected').val();
+    podaci+=`&sifraHotela=${hotel}`;
+
     let kuhinjaVrednost= $('#checkKuhinja').is(":checked")?1:0;
     let terasaVrednost= $('#checkTerasa').is(":checked")?1:0;
     let minibarVrednost= $('#checkMinibar').is(":checked")?1:0;
@@ -67,7 +77,7 @@ $('#formaHotelskaSoba').submit(function (){
             $('<div style="color: green;"><h5>Uspesno sacuvana soba</h5></div>').insertBefore($('#nazivHotelskeSobeDiv')).delay(3000).fadeOut(function() {
                 $(this).remove();
             });
-         //   location.reload();
+            location.reload();
         }else{
             $('<div style="color: red;"><h5>Neuspesno sacuvana soba</h5></div>').insertBefore($('#nazivHotelskeSobeDiv')).delay(3000).fadeOut(function() {
                 $(this).remove();

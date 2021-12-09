@@ -61,7 +61,7 @@ $conn = Baza::getConnection();
 
 
         <div class="form-check container">
-            <input class="form-check-input" type="checkbox" value="1" id="checkStrani">
+            <input class="form-check-input" type="checkbox" value="1" name="straniGost" id="checkStrani">
             <label class="form-check-label" for="checkStrani" style="color: white">
                 Strani gost
             </label>
