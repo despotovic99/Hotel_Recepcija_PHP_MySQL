@@ -3,9 +3,9 @@
 class Baza
 {
 
-    private  $host="hotel_database";
-    private  $user="admin";
-    private  $password="admin";
+    private  $host="localhost";
+    private  $user="root";
+    private  $password="";
     private  $database="hotel_db";
 
     private static ?mysqli $conn=null;
