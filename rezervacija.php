@@ -5,6 +5,12 @@ require_once "model/Gost.php";
 require_once "model/Rezervacija.php";
 $conn=Baza::getConnection();
 $rezervacijeOdgovor=null;
+
+session_start();
+if (!isset($_SESSION['username_trenutni'])) {
+    header('Location: index.php');
+    exit();
+}
 ?>
 
 <!doctype html>

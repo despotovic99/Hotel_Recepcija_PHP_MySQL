@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
         <ul class="navbar-nav mr-auto">
@@ -17,4 +17,12 @@
         </ul>
 
     </div>
+
+    <?php
+    if (isset($_SESSION['username_trenutni'])) {
+       echo '<div><form action="operations/logout.php">
+                        <button class="btn btn-danger" type="submit">Odjavi se</button>
+                  </form></div>';
+    }
+    ?>
 </nav>

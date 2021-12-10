@@ -2,6 +2,11 @@
 require_once "model/Gost.php";
 require_once "database/Baza.php";
 $conn = Baza::getConnection();
+session_start();
+if (!isset($_SESSION['username_trenutni'])) {
+    header('Location: index.php');
+    exit();
+}
 ?>
 
 <!doctype html>

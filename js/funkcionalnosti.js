@@ -78,9 +78,4 @@ $('#sortBtn').click(function (){
             }
         }
     }
-
-
-
-
-
 });

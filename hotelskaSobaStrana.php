@@ -3,6 +3,12 @@ require_once "model/HotelskaSoba.php";
 require_once "model/Hotel.php";
 require_once "database/Baza.php";
 $conn=Baza::getConnection();
+session_start();
+if (!isset($_SESSION['username_trenutni'])) {
+    header('Location: index.php');
+    exit();
+}
+
 ?>
 <!doctype html>
 <html lang="en">
